@@ -23,7 +23,7 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-Cypress.Commands.add("Start", () => {
+Cypress.Commands.add("start", () => {
   cy.viewport(1440, 900);
   cy.visit("http://localhost:3000");
 });
@@ -35,4 +35,9 @@ Cypress.Commands.add("submitLoginForm", (email, senha) => {
 
   cy.contains("button", "Entrar").click();
   // Contenha determinado botão entrar
+});
+
+Cypress.Commands.add("goTo", (ButtonName, pageTitle) => {
+  cy.contains("Button", ButtonName).should("be.visible").click();
+  cy.contains("h1", pageTitle).should("be.visible");
 });
